@@ -9,7 +9,6 @@ import { S3Service } from '../s3/s3.service';
 export type MongoAttachment = {
   id: string;
   name: string;
-  link: string;
   type: string;
   createdAt: Date;
 };
@@ -25,12 +24,12 @@ export class MongoAttachmentRepository implements AttachmentRepository {
     this.mongo = this.mongoClient.getDb();
   }
 
-  async persist(attachment: Attachment): Promise<Attachment> {
+  async persist(attachment: Attachment, buffer: Buffer): Promise<Attachment> {
+    await this.s3Service.uploadFile(`attachments/${attachment.id}`, Readable.from(buffer), attachment.type);
     const collection = this.mongo.collection('attachments');
     const mongoAttachment: MongoAttachment = {
       id: attachment.id!,
       name: attachment.name,
-      link: attachment.link,
       type: attachment.type,
       createdAt: attachment.createdAt!,
     };
@@ -47,7 +46,6 @@ export class MongoAttachmentRepository implements AttachmentRepository {
     return Attachment.create({
       id: mongoAttachment.id,
       name: mongoAttachment.name,
-      link: mongoAttachment.link,
       type: mongoAttachment.type,
       createdAt: mongoAttachment.createdAt,
     });

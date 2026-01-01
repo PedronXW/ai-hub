@@ -7,15 +7,13 @@ export class CreateAttachmentService {
     private readonly attachmentRepository: AttachmentRepository,
   ) {}
 
-  async execute(link: string, type: string, name: string) {
+  async execute(buffer: Buffer, type: string, name: string) {
     const attachment = Attachment.create({
-      link,
       type,
       name,
     });
 
-    await this.attachmentRepository.persist(attachment);
-
+    await this.attachmentRepository.persist(attachment, buffer);
     return attachment;
   }
 }
