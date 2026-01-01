@@ -12,7 +12,7 @@ export class MongoService
     console.log('Conectando ao MongoDB...');
     this.client = new MongoClient(
       process.env.MONGO_CONNECTION ||
-      'mongodb://admin:admin@mongo:27017/ai_hub?authSource=admin',
+      'mongodb://admin:admin@localhost:27017/ai_hub?authSource=admin',
     );
 
     await this.client.connect();

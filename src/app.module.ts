@@ -14,6 +14,7 @@ import { MongoAnalyzeRepository } from './infra/repositories/analyze-repository'
 import { MongoAttachmentRepository } from './infra/repositories/attachment-repository';
 import { MongoModelRepository } from './infra/repositories/model-repository';
 import { MongoProcessRepository } from './infra/repositories/process-repository';
+import { S3_CLIENT, s3ClientFactory } from './infra/s3/s3.config';
 import { S3Service } from './infra/s3/s3.service';
 import { MongoModule } from './mongo/mongo.module';
 
@@ -30,6 +31,10 @@ import { MongoModule } from './mongo/mongo.module';
     CreateModelService, 
     CreateProcessService, 
     S3Service,
+    {
+      provide: S3_CLIENT,
+      useFactory: s3ClientFactory,
+    },
     {provide: AnalyzeRepositoryInterface, useClass: MongoAnalyzeRepository}, 
     {provide: ModelRepositoryInterface, useClass: MongoModelRepository}, 
     {provide: ProcessRepositoryInterface, useClass: MongoProcessRepository},
