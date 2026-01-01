@@ -1,3 +1,4 @@
+import { Injectable } from "@nestjs/common";
 import { Db } from "mongodb";
 import { Model } from "src/domain/model";
 import { ModelRepositoryInterface } from "src/domain/repositories/model-repository-interface";
@@ -6,10 +7,12 @@ import { MongoService } from "src/mongo/mongo.service";
 export type MongoModel = {
     _id?: string;
     name: string;
-    environment_variables: Array<string>;
+    environment_variables: Record<string, string>;
     createdAt: Date;
     updatedAt: Date;
 }
+
+@Injectable()
 export class MongoModelRepository implements ModelRepositoryInterface {
     private readonly mongo: Db;
 

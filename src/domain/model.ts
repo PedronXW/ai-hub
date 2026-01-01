@@ -4,7 +4,7 @@ import { Optional } from 'src/@shared/types/optional';
 export type ModelProps = {
   id?: string;
   name: string;
-  environment_variables: Array<string>;
+  environment_variables: Record<string, string>;
   createdAt: Date;
   updatedAt: Date;
 };
@@ -12,7 +12,7 @@ export type ModelProps = {
 export class Model implements ModelProps {
   id?: string;
   name: string;
-  environment_variables: Array<string>;
+  environment_variables: Record<string, string>;
   createdAt: Date;
   updatedAt: Date;
 

@@ -1,6 +1,7 @@
+import { Injectable } from "@nestjs/common";
 import { Db } from "mongodb";
 import { Analyze } from "src/domain/analyze";
-import { AnalyzeRepositoryInterface } from "src/domain/repositories/analyze-repository-interface copy";
+import { AnalyzeRepositoryInterface } from "src/domain/repositories/analyze-repository-interface";
 import { MongoService } from "src/mongo/mongo.service";
 
 
@@ -15,10 +16,11 @@ export type MongoAnalyze = {
     updatedAt: Date;
 }
 
+@Injectable()
 export class MongoAnalyzeRepository  implements AnalyzeRepositoryInterface {
     private readonly mongo: Db;
 
-    constructor(private readonly mongoClient: MongoService) {
+    constructor(private mongoClient: MongoService) {
         this.mongo = this.mongoClient.getDb();
     }
 

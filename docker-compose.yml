@@ -39,3 +39,13 @@ services:
       - "27017:27017"
     volumes:
       - ./.data/mongo:/data/db
+
+  s3mock:
+    image: adobe/s3mock:latest
+    environment:
+      - initialBuckets=local
+      - root=containers3root
+    volumes:
+      - ./.data/s3:/containers3root
+    ports:
+      - 9090:9090

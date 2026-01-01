@@ -1,3 +1,4 @@
+import { Injectable } from "@nestjs/common";
 import { Db } from "mongodb";
 import { ProcessRepositoryInterface } from "src/domain/repositories/process-repository-interface";
 import { MongoService } from "src/mongo/mongo.service";
@@ -13,6 +14,7 @@ export type MongoProcess = {
   updatedAt: Date;
 };
 
+@Injectable()
 export class MongoProcessRepository implements ProcessRepositoryInterface {
     private readonly mongo: Db;
     
