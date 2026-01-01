@@ -6,7 +6,7 @@ export class CreateAnalyzeController {
     constructor(private readonly createAnalyzeService: CreateAnalyzeService) {}
 
     @Post()
-    async handle(@Body() body: {name: string, prompt: string, modelId: string}): Promise<void> {
-        await this.createAnalyzeService.execute(body.name, body.prompt, body.modelId)
+    async handle(@Body() body: {name: string, prompt: string, modelId: string}) {
+        return await this.createAnalyzeService.execute(body.name, body.prompt, body.modelId)
     }
 }

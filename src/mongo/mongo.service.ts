@@ -1,31 +1,21 @@
-import { Injectable, OnModuleDestroy, OnModuleInit } from "@nestjs/common";
-import { Db, MongoClient } from "mongodb";
+import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
+import { MongoClient } from 'mongodb';
 
 @Injectable()
-export class MongoService
-  implements OnModuleInit, OnModuleDestroy {
-
-  private client: MongoClient;
-  private database: Db;
-
-  async onModuleInit() {
-    console.log('Conectando ao MongoDB...');
-    this.client = new MongoClient(
-      process.env.MONGO_CONNECTION ||
-      'mongodb://admin:admin@localhost:27017/ai_hub?authSource=admin',
-    );
-
-    await this.client.connect();
-    this.database = this.client.db();
-
-    console.log('Mongo conectado');
+export class MongoService extends MongoClient implements OnModuleInit, OnModuleDestroy {
+  constructor() {
+    super(process.env.MONGO_CONNECTION || 'mongodb://admin:admin@localhost:27017/ai_hub?authSource=admin');
   }
 
-  getDb(): Db {
-    return this.database;
+  getDb() {
+    return this.db();
+  }
+
+  async onModuleInit() {
+    await this.connect();
   }
 
   async onModuleDestroy() {
-    await this.client.close();
+    await this.close();
   }
 }
