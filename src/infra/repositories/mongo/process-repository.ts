@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { Db } from "mongodb";
-import { ProcessRepositoryInterface } from "src/domain/repositories/process-repository-interface";
+import { ProcessRepositoryInterface } from "src/domain/repositories/persistence/process-repository-interface";
 import { MongoService } from "src/mongo/mongo.service";
 
 export type MongoProcess = {

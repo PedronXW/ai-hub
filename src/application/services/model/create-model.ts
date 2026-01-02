@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { Model } from "src/domain/model";
-import { ModelRepositoryInterface } from "src/domain/repositories/model-repository-interface";
+import { ModelRepositoryInterface } from "src/domain/repositories/persistence/model-repository-interface";
 
 @Injectable()
 export class CreateModelService {

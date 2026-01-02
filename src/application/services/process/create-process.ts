@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { Process } from "src/domain/process";
-import { ProcessRepositoryInterface } from "src/domain/repositories/process-repository-interface";
+import { ProcessRepositoryInterface } from "src/domain/repositories/persistence/process-repository-interface";
 
 @Injectable()
 export class CreateProcessService {

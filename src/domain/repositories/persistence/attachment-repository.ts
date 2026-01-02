@@ -1,5 +1,5 @@
 import { Readable } from 'stream';
-import { Attachment } from '../attachment';
+import { Attachment } from '../../attachment';
 
 export abstract class AttachmentRepository {
   abstract persist(attachment: Attachment, buffer: Buffer): Promise<Attachment>;

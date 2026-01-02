@@ -1,4 +1,4 @@
-import { Analyze } from "../analyze";
+import { Analyze } from "../../analyze";
 
 export abstract class AnalyzeRepositoryInterface {
     abstract createAnalyze(data: any): Promise<void>

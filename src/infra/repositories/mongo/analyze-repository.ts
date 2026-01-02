@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { Db } from "mongodb";
 import { Analyze } from "src/domain/analyze";
-import { AnalyzeRepositoryInterface } from "src/domain/repositories/analyze-repository-interface";
+import { AnalyzeRepositoryInterface } from "src/domain/repositories/persistence/analyze-repository-interface";
 import { MongoService } from "src/mongo/mongo.service";
 
 

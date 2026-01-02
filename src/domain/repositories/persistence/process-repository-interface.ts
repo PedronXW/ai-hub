@@ -1,4 +1,4 @@
-import { Process } from "../process";
+import { Process } from "../../process";
 
 export abstract class ProcessRepositoryInterface {
     abstract createProcess(data: any): Promise<void>

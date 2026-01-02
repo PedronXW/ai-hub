@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { Attachment } from "src/domain/attachment";
-import { AttachmentRepository } from "src/domain/repositories/attachment-repository";
+import { AttachmentRepository } from "src/domain/repositories/persistence/attachment-repository";
 
 @Injectable()
 export class CreateAttachmentService {

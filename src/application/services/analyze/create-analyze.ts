@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { Analyze } from "src/domain/analyze";
-import { AnalyzeRepositoryInterface } from "src/domain/repositories/analyze-repository-interface";
+import { AnalyzeRepositoryInterface } from "src/domain/repositories/persistence/analyze-repository-interface";
 
 @Injectable()
 export class CreateAnalyzeService {

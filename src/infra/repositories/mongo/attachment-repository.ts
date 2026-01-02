@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { Db } from 'mongodb';
 import { Attachment } from 'src/domain/attachment';
-import { AttachmentRepository } from 'src/domain/repositories/attachment-repository';
+import { AttachmentRepository } from 'src/domain/repositories/persistence/attachment-repository';
 import { MongoService } from 'src/mongo/mongo.service';
 import { Readable } from 'stream';
-import { S3Service } from '../s3/s3.service';
+import { S3Service } from '../../s3/s3.service';
 
 export type MongoAttachment = {
   id: string;
